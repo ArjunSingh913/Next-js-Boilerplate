@@ -54,5 +54,6 @@ export const config = {
     '/dashboard(.*)', // Match /dashboard and its subpaths
     '/sign-in', // Match sign-in page
     '/sign-up',
+    '/doctor-listing',
   ],
 };
