@@ -1,46 +1,44 @@
 // pages/doctor-listing.tsx
-import Link from 'next/link';
+
+import DoctorCard from '@/components/DoctorCard';
 
 const doctors = [
-  { id: 1, name: 'Dr. Alice Johnson', specialty: 'Cardiology', photo: 'https://imgv3.fotor.com/images/gallery/a-man-profile-picture-with-blue-and-green-background-made-by-LinkedIn-Profile-Picture-Maker.jpg', rating: 4.5 },
-  { id: 2, name: 'Dr. Bob Smith', specialty: 'Dermatology', photo: 'https://th.bing.com/th/id/OIP.lippvmckkmvu4bH1Hu8beQAAAA?w=400&h=400&rs=1&pid=ImgDetMain', rating: 4.2 },
-  { id: 3, name: 'Dr. Clara Lee', specialty: 'Neurology', photo: 'https://eventually.com/img/speakers/vincenzo-toscano-ceo.jpg', rating: 4.8 },
+  {
+    id: 1,
+    name: 'Dr. Prakash Das',
+    specialty: 'Sr. Psychologist',
+    availability: 'Available today',
+    time: '09:30 AM - 07:00 PM',
+    practiceDetails: 'As Psychologist, Dr. Das practices about 7+ years...',
+    image: 'https://thumbs.dreamstime.com/b/happy-healthcare-portrait-doctor-hospital-proud-empowered-confident-face-leader-male-health-expert-happy-270112047.jpg', // Use an appropriate image path
+  },
+  {
+    id: 2,
+    name: 'Dr. John Doe',
+    specialty: 'Cardiologist',
+    availability: 'Available tomorrow',
+    time: '10:00 AM - 05:00 PM',
+    practiceDetails: 'Practicing cardiology for over 10 years...',
+    image: 'https://wallpapers.com/images/hd/doctor-pictures-l5y1qs2998u7rf0x.jpg',
+  },
 ];
-
 const DoctorListing = () => {
   return (
-    <div className="container mx-auto py-16">
-      <h1 className="mb-8 text-center text-3xl font-bold text-gray-800">Doctor Listing</h1>
-
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+    <div className="container mx-auto p-6">
+      <div className="text-center">
+        <h1 className="mb-6 text-3xl font-bold">Hello, Priya</h1>
+        <p className="text-gray-500">@Dombivli, Mumbai</p>
+      </div>
+      <div className="mt-6">
+        <input
+          type="text"
+          className="w-full rounded-md border p-2"
+          placeholder="Search Doctors"
+        />
+      </div>
+      <div className="mt-6">
         {doctors.map(doctor => (
-          <div key={doctor.id} className="rounded-lg bg-white p-6 shadow-lg">
-            <div className="mb-4 flex items-center">
-              <img
-                src={doctor.photo}
-                alt={`Doctor ${doctor.name}`}
-                width={64}
-                height={64}
-                className="mr-4 size-16 rounded-full"
-              />
-              <div>
-                <h3 className="text-xl font-bold text-blue-600">{doctor.name}</h3>
-                <p className="text-gray-600">
-                  Specialty:
-                  {doctor.specialty}
-                </p>
-                <p className="text-gray-600">
-                  Rating:
-                  {doctor.rating}
-                </p>
-              </div>
-            </div>
-            <Link href={`/book-appointment/${doctor.id}`}>
-              <button type="button" className="mt-4 rounded-lg bg-green-600 px-4 py-2 text-white shadow-md hover:bg-green-700">
-                Book Appointment
-              </button>
-            </Link>
-          </div>
+          <DoctorCard key={doctor.id} doctor={doctor} />
         ))}
       </div>
     </div>
