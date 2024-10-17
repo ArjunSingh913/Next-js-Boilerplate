@@ -36,6 +36,7 @@
     "@spotlightjs/spotlight": "^2.4.2",
     "@t3-oss/env-nextjs": "^0.11.1",
     "drizzle-orm": "^0.33.0",
+    "formik": "^2.4.6",
     "next": "^14.2.13",
     "next-intl": "^3.20.0",
     "pg": "^8.13.0",
@@ -46,6 +47,7 @@
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.53.0",
     "sharp": "^0.33.5",
+    "yup": "^1.4.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {

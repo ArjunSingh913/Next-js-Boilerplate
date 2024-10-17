@@ -67,15 +67,11 @@ const BookAppointment: React.FC = () => {
 
   const handleSubmit = () => {
     if (!date || !time) {
-      return; // Early return if date or time is not set
+      return;
     }
 
-    // Handle form submission logic here (e.g., API call)
-
-    // Construct the URL with query parameters
     const successUrl = `/success?doctorName=${encodeURIComponent(doctor?.name ?? '')}&specialty=${encodeURIComponent(doctor?.specialty ?? '')}&date=${encodeURIComponent(date)}&time=${encodeURIComponent(time)}`;
 
-    // Redirect to the success page after booking
     router.push(successUrl);
   };
 
