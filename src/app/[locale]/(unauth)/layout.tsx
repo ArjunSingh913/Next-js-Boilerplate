@@ -10,8 +10,8 @@ export default function Layout(props: {
 
   return (
     <>
-      <NavBar />
-      <main className="container mx-auto grow p-4">
+      <NavBar userId={null} />
+      <main className="container mx-auto mt-16 grow p-4">
         {props.children}
       </main>
     </>

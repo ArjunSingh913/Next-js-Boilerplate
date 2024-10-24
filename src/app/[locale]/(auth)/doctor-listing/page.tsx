@@ -1,4 +1,5 @@
-// pages/doctor-listing.tsx
+import { auth } from '@clerk/nextjs/server';
+import Link from 'next/link';
 
 import DoctorCard from '@/components/DoctorCard';
 
@@ -22,13 +23,18 @@ const doctors = [
     image: 'https://wallpapers.com/images/hd/doctor-pictures-l5y1qs2998u7rf0x.jpg',
   },
 ];
+
 const DoctorListing = () => {
+  const { userId } = auth();
   return (
     <div className="container mx-auto p-6">
+      {/* Greeting Section */}
       <div className="text-center">
         <h1 className="mb-6 text-3xl font-bold">Hello, Priya</h1>
         <p className="text-gray-500">@Dombivli, Mumbai</p>
       </div>
+
+      {/* Search Input */}
       <div className="mt-6">
         <input
           type="text"
@@ -36,9 +42,15 @@ const DoctorListing = () => {
           placeholder="Search Doctors"
         />
       </div>
+
+      {/* Doctor Listing */}
       <div className="mt-6">
         {doctors.map(doctor => (
-          <DoctorCard key={doctor.id} doctor={doctor} />
+          <Link key={doctor.id} href={userId ? `/book-appointment/${doctor.id}` : `/requires_login`} passHref>
+            <div>
+              <DoctorCard doctor={doctor} />
+            </div>
+          </Link>
         ))}
       </div>
     </div>

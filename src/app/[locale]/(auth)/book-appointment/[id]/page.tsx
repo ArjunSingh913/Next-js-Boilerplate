@@ -16,28 +16,20 @@ type Doctor = {
 // Sample doctor data for demonstration - replace with actual data fetching logic
 const sampleDoctorData: Record<string, Doctor> = {
   1: {
-    name: 'Dr. Alice Johnson',
-    specialty: 'Cardiology',
-    photo: 'https://imgv3.fotor.com/images/gallery/a-man-profile-picture-with-blue-and-green-background-made-by-LinkedIn-Profile-Picture-Maker.jpg',
-    experience: '10 years',
+    name: 'Dr. Prakash Das',
+    specialty: 'Sr. Psychologist',
+    photo: 'https://thumbs.dreamstime.com/b/happy-healthcare-portrait-doctor-hospital-proud-empowered-confident-face-leader-male-health-expert-happy-270112047.jpg',
+    experience: '7+ years',
     location: 'New York',
-    description: 'Expert in heart diseases and patient care.',
+    description: 'As Psychologist, Dr. Das practices about 7+ years...',
   },
   2: {
-    name: 'Dr. Bob Smith',
-    specialty: 'Dermatology',
-    photo: 'https://th.bing.com/th/id/OIP.lippvmckkmvu4bH1Hu8beQAAAA?w=400&h=400&rs=1&pid=ImgDetMain',
-    experience: '8 years',
+    name: 'Dr. John Doe',
+    specialty: 'Cardiologist',
+    photo: 'https://wallpapers.com/images/hd/doctor-pictures-l5y1qs2998u7rf0x.jpg',
+    experience: '10 years',
     location: 'Los Angeles',
-    description: 'Specializes in skin conditions and treatments.',
-  },
-  3: {
-    name: 'Dr. Clara Lee',
-    specialty: 'Neurology',
-    photo: 'https://eventually.com/img/speakers/vincenzo-toscano-ceo.jpg',
-    experience: '12 years',
-    location: 'Chicago',
-    description: 'Focused on neurological disorders and treatments.',
+    description: 'Practicing cardiology for over 10 years...',
   },
 };
 
@@ -70,8 +62,6 @@ const BookAppointment: React.FC = () => {
       return; // Early return if date or time is not set
     }
 
-    // Handle form submission logic here (e.g., API call)
-
     // Construct the URL with query parameters
     const successUrl = `/success?doctorName=${encodeURIComponent(doctor?.name ?? '')}&specialty=${encodeURIComponent(doctor?.specialty ?? '')}&date=${encodeURIComponent(date)}&time=${encodeURIComponent(time)}`;
 
@@ -89,64 +79,66 @@ const BookAppointment: React.FC = () => {
   }
 
   return (
-    <div className="container mx-auto py-16">
-      <h1 className="mb-8 text-center text-3xl font-bold text-gray-800">
-        Book Appointment with
-        {' '}
-        {doctor.name}
-      </h1>
-
-      <div className="mb-8 flex justify-center">
-        <img
-          src={doctor.photo}
-          alt={doctor.name}
-          className="size-32 rounded-full object-cover shadow-lg"
-        />
-      </div>
-
-      <div className="mb-4 text-center">
-        <h2 className="text-2xl font-semibold text-blue-600">{doctor.specialty}</h2>
-        <p className="text-gray-600">
-          <strong>Experience:</strong>
+    <div className="min-h-screen">
+      <div className="container mx-auto max-w-2xl rounded-lg border border-gray-200 bg-white p-6 shadow-lg">
+        <h1 className="mb-8 text-center text-3xl font-bold text-gray-800">
+          Book Appointment with
           {' '}
-          {doctor.experience}
-        </p>
-        <p className="text-gray-600">
-          <strong>Location:</strong>
-          {' '}
-          {doctor.location}
-        </p>
-        <p className="text-gray-600">{doctor.description}</p>
-      </div>
+          {doctor.name}
+        </h1>
 
-      <div className="mx-auto max-w-md rounded-lg bg-white p-6 shadow-lg">
-        <div className="mb-4">
-          <label htmlFor="date" className="block text-gray-600">Select Date</label>
-          <input
-            type="date"
-            className="w-full rounded border px-3 py-2"
-            value={date}
-            onChange={e => setDate(e.target.value)}
+        <div className="mb-8 flex justify-center ">
+          <img
+            src={doctor.photo}
+            alt={doctor.name}
+            className="size-32 rounded-full object-cover shadow-lg"
           />
         </div>
 
-        <div className="mb-4">
-          <label htmlFor="time" className="block text-gray-600">Select Time</label>
-          <input
-            type="time"
-            className="w-full rounded border px-3 py-2"
-            value={time}
-            onChange={e => setTime(e.target.value)}
-          />
+        <div className="mb-4 text-center">
+          <h2 className="text-2xl font-semibold text-blue-600">{doctor.specialty}</h2>
+          <p className="text-gray-600">
+            <strong>Experience:</strong>
+            {' '}
+            {doctor.experience}
+          </p>
+          <p className="text-gray-600">
+            <strong>Location:</strong>
+            {' '}
+            {doctor.location}
+          </p>
+          <p className="text-gray-600">{doctor.description}</p>
         </div>
 
-        <button
-          type="button"
-          className="w-full rounded-lg bg-blue-600 px-4 py-2 text-white shadow-md hover:bg-blue-700"
-          onClick={handleSubmit}
-        >
-          Confirm Appointment
-        </button>
+        <div className="mx-auto max-w-md rounded-lg bg-white p-6 shadow-lg">
+          <div className="mb-4">
+            <label htmlFor="date" className="block text-gray-600">Select Date</label>
+            <input
+              type="date"
+              className="w-full rounded border px-3 py-2"
+              value={date}
+              onChange={e => setDate(e.target.value)}
+            />
+          </div>
+
+          <div className="mb-4">
+            <label htmlFor="time" className="block text-gray-600">Select Time</label>
+            <input
+              type="time"
+              className="w-full rounded border px-3 py-2"
+              value={time}
+              onChange={e => setTime(e.target.value)}
+            />
+          </div>
+
+          <button
+            type="button"
+            className="w-full rounded-lg bg-blue-600 px-4 py-2 text-white shadow-md hover:bg-blue-700"
+            onClick={handleSubmit}
+          >
+            Confirm Appointment
+          </button>
+        </div>
       </div>
     </div>
   );

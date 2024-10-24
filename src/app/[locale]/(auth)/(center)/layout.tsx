@@ -1,6 +1,8 @@
 import { auth } from '@clerk/nextjs/server';
 import { redirect } from 'next/navigation';
 
+import { NavBar } from '@/components/NavBar';
+
 export default function CenteredLayout(props: { children: React.ReactNode }) {
   const { userId } = auth();
 
@@ -9,8 +11,11 @@ export default function CenteredLayout(props: { children: React.ReactNode }) {
   }
 
   return (
-    <div className="">
-      {props.children}
-    </div>
+    <>
+      <NavBar userId={userId} />
+      <div className="flex h-screen items-center justify-center">
+        {props.children}
+      </div>
+    </>
   );
 }

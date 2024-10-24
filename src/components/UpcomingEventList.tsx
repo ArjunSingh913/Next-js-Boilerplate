@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 type Appointment = {
@@ -22,7 +23,7 @@ const UpcomingEventList = ({ appointments }: { appointments: Appointment[] }) =>
                   className="mb-4 mr-0 size-16 rounded-full md:mb-0 md:mr-4"
                 />
 
-                <div className="flex-1">
+                <Link href={`/appointment-details/${appointment.id}`} className="flex-1">
                   <div className="flex flex-col items-center justify-between md:flex-row md:items-start">
                     <div>
                       <p className="text-center text-lg font-semibold md:text-left">{appointment.doctor}</p>
@@ -31,13 +32,13 @@ const UpcomingEventList = ({ appointments }: { appointments: Appointment[] }) =>
                         {appointment.tokenNo}
                       </p>
                     </div>
-                    <div className="mt-2 text-center md:mt-0 md:text-right">
+                    <div className="mt-4 text-center  md:text-right">
                       <p className="text-sm">
                         {appointment.date}
                         {' '}
                         |
                         {' '}
-                        <span className="text-blue-500">{appointment.time}</span>
+                        <span className="text-blue-500 ">{appointment.time}</span>
                       </p>
                       <p className="text-sm text-gray-500">
                         Payment |
@@ -49,7 +50,7 @@ const UpcomingEventList = ({ appointments }: { appointments: Appointment[] }) =>
                   <p className="mt-2 text-center text-sm text-gray-600 md:text-left">
                     Reduce your waiting time and visiting time by paying the consulting fee upfront.
                   </p>
-                </div>
+                </Link>
 
                 <button type="button" className="mt-4 rounded-full bg-blue-500 px-4 py-2 text-white md:ml-4 md:mt-0">
                   Make Payment

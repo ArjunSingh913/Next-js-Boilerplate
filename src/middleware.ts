@@ -13,6 +13,13 @@ const intlMiddleware = createMiddleware({
 const isProtectedRoute = createRouteMatcher([
   '/dashboard(.*)',
   '/:locale/dashboard(.*)',
+  '/doctor-listing(.*)',
+  '/appointment-screen(.*)',
+  '/notifications(.*)',
+  '/appointment-details(.*)',
+  '/reschedule_appointment(.*)',
+  '/book-appointment(.*)',
+  '/success(.*)',
 ]);
 
 export default function middleware(
@@ -54,6 +61,5 @@ export const config = {
     '/dashboard(.*)', // Match /dashboard and its subpaths
     '/sign-in', // Match sign-in page
     '/sign-up',
-    '/doctor-listing',
   ],
 };

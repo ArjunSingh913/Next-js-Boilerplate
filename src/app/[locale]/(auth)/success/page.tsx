@@ -44,7 +44,7 @@ const SuccessPage = () => {
           <button
             type="button"
             className="w-full rounded-lg bg-blue-600 px-4 py-2 text-white shadow-md transition duration-300 hover:bg-blue-700"
-            onClick={() => window.location.href = '/'}
+            onClick={() => window.location.href = '/dashboard'}
           >
             Go Back to Home
           </button>

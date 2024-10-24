@@ -7,9 +7,9 @@ const CustomSignUpForm = () => {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
-  const [clinicName, setClinicName] = useState('');
+  // const [clinicName, setClinicName] = useState('');
   const [specialization, setSpecialization] = useState('');
-  const [licenseNumber, setLicenseNumber] = useState('');
+  // const [licenseNumber, setLicenseNumber] = useState('');
   const [error] = useState(null);
 
   const handleSignUp = async (e: React.FormEvent) => {
@@ -17,7 +17,7 @@ const CustomSignUpForm = () => {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4 py-12">
+    <div className="mt-36 flex min-h-screen items-center justify-center  ">
       <div className="flex w-full max-w-4xl overflow-hidden rounded-lg bg-white shadow-lg">
         {/* Left Side - Image or Information */}
         <div className="flex w-1/2 items-center justify-center bg-gradient-to-br from-blue-500 to-purple-600 p-10 text-white">
@@ -108,17 +108,6 @@ const CustomSignUpForm = () => {
             {/* Additional Fields for Doctor Sign-Up */}
             {isDoctor && (
               <>
-                <div className="mb-4">
-                  <label htmlFor="clinic_name" className="mb-1 block font-medium text-gray-700">Clinic Name</label>
-                  <input
-                    type="text"
-                    value={clinicName}
-                    onChange={e => setClinicName(e.target.value)}
-                    className="w-full rounded-lg border border-gray-300 p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder="Enter your clinic name"
-                    required={isDoctor}
-                  />
-                </div>
 
                 {/* Specialization Select Dropdown */}
                 <div className="mb-4">
@@ -139,18 +128,6 @@ const CustomSignUpForm = () => {
                     <option value="General Physician">General Physician</option>
                     {/* Add more options as needed */}
                   </select>
-                </div>
-
-                <div className="mb-4">
-                  <label htmlFor="license_number" className="mb-1 block font-medium text-gray-700">License Number</label>
-                  <input
-                    type="text"
-                    value={licenseNumber}
-                    onChange={e => setLicenseNumber(e.target.value)}
-                    className="w-full rounded-lg border border-gray-300 p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder="Enter your license number"
-                    required={isDoctor}
-                  />
                 </div>
               </>
             )}

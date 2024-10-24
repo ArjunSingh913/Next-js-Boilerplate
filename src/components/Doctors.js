@@ -49,7 +49,7 @@ const Doctors = () => {
               <p className="mb-4 text-center text-gray-600">{doctor.specialty}</p>
               <p className="text-center font-medium text-blue-500">{doctor.contact}</p>
               <div className="mt-6 flex justify-center">
-                <button className="rounded-full bg-blue-500 px-4 py-2 text-white transition-colors duration-300 hover:bg-blue-600">
+                <button type="button" className="rounded-full bg-blue-500 px-4 py-2 text-white transition-colors duration-300 hover:bg-blue-600">
                   Contact Doctor
                 </button>
               </div>
