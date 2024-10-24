@@ -24,7 +24,8 @@
     "storybook:serve": "http-server storybook-static --port 6006 --silent",
     "serve-storybook": "run-s storybook:*",
     "test-storybook:ci": "start-server-and-test serve-storybook http://127.0.0.1:6006 test-storybook",
-    "prepare": "husky"
+    "prepare": "husky",
+    "json-server": "json-server --watch db.json --port 3001"
   },
   "dependencies": {
     "@clerk/localizations": "^3.1.0",
@@ -101,6 +102,7 @@
     "husky": "^9.1.6",
     "jiti": "^1.21.6",
     "jsdom": "^25.0.1",
+    "json-server": "^1.0.0-beta.3",
     "lint-staged": "^15.2.10",
     "npm-run-all": "^4.1.5",
     "rimraf": "^6.0.1",
