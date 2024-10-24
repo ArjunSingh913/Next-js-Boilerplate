@@ -77,8 +77,14 @@ const AppointmentDetails = () => {
   const appointmentStatus = 'Waiting';
 
   return (
-    <div className="flex min-h-screen justify-center p-4">
-      <div className="mx-auto max-w-2xl rounded-lg border border-gray-200 bg-white p-6 shadow-lg">
+    <div className="min-h-screen bg-gray-50 p-4">
+      <div className="mx-auto max-w-md rounded-lg border border-gray-200 bg-white p-6 shadow-lg">
+        {/* Header */}
+        <div className="flex items-center justify-between">
+          <button type="button" className="text-gray-600">←</button>
+          <h2 className="text-lg font-semibold text-gray-800">Appointment Details</h2>
+        </div>
+
         {/* Doctor Info */}
         <DoctorInfo doctor={doctor} />
 
