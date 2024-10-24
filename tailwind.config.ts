@@ -1,12 +1,14 @@
 import type { Config } from 'tailwindcss';
 
-export default {
+const config: Config = {
   content: [
-    './src/**/*.{js,ts,jsx,tsx}',
-    './public/**/*.html',
+    './src/**/*.{js,ts,jsx,tsx}', // All source files
+    './public/**/*.html', // HTML files in the public directory
   ],
   theme: {
-    extend: {},
+    extend: {}, // Extend default theme here
   },
-  plugins: [],
-} satisfies Config;
+  plugins: [], // Add any Tailwind plugins if needed
+};
+
+export default config;
