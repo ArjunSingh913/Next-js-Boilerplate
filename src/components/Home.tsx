@@ -1,6 +1,3 @@
-import { currentUser } from '@clerk/nextjs/server';
-import { getTranslations } from 'next-intl/server';
-
 import AppointmentBooking from './AppointmentBooking';
 import ConsultationCategories from './ConsultationCategories';
 import HealthArticles from './HealthArticles';
@@ -9,9 +6,6 @@ import ServiceCategories from './ServiceCategories';
 import UserTestimonials from './UserTestimonials';
 
 export const Home = async () => {
-  const t = await getTranslations('Dashboard');
-  const user = await currentUser();
-
   return (
     <>
       <HeroSection />
@@ -20,10 +14,6 @@ export const Home = async () => {
       <HealthArticles />
       <UserTestimonials />
       <ServiceCategories />
-      <p>
-        {`👋 `}
-        {t('hello_message', { email: user?.emailAddresses[0]?.emailAddress })}
-      </p>
       <p>
         {`Looking for a SaaS Boilerplate? `}
         <a
