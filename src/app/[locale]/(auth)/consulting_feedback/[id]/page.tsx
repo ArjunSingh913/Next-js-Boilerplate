@@ -1,21 +1,69 @@
 'use client';
-import React from 'react';
+import { useParams } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 
-import ConsultingTime from '../../../../components/ConsultingTime';
-import DoctorDetails from '../../../../components/DoctorInfo';
-import StarRating from '../../../../components/StarRating';
+import ConsultingTime from '@/components/ConsultingTime';
+import DoctorInfo from '@/components/DoctorInfo';
+import StarRating from '@/components/StarRating';
 
+type Doctor = {
+  name: string;
+  specialty: string;
+  image: string;
+  experience: string;
+  location: string;
+  description: string;
+  qualifications: string;
+};
+
+const sampleDoctorData: Record<string, Doctor> = {
+  1: {
+    name: 'Dr. Abhay Das',
+    specialty: 'Sr. Psychologist',
+    image: 'https://th.bing.com/th/id/OIP.YGkuNO_pXJ6XSIeN9Ckb-QHaGN?rs=1&pid=ImgDetMain',
+    experience: '7+ years',
+    location: 'New York',
+    description: 'As Psychologist, Dr. Das practices about 7+ years...',
+    qualifications: 'MBBS',
+  },
+  2: {
+    name: 'Dr. Nitin Kumar',
+    specialty: 'Cardiologist',
+    image: 'https://th.bing.com/th/id/OIP.EUlE__yXCoyX0QkzKBTs8gHaFh?w=980&h=731&rs=1&pid=ImgDetMain',
+    experience: '10 years',
+    location: 'Los Angeles',
+    description: 'Practicing cardiology for over 10 years...',
+    qualifications: 'MBBS',
+  },
+};
 const ConsultingFeedback = () => {
-  const doctor = {
-    name: 'Dr. Kumar Das',
-    specialty: 'Cardiologist - Dombivli',
-    qualifications: 'MBBS, MD (Internal Medicine)',
-    image: 'https://thumbs.dreamstime.com/b/happy-healthcare-portrait-doctor-hospital-proud-empowered-confident-face-leader-male-health-expert-happy-270112047.jpg',
-  };
-
+  const [doctor, setDoctor] = useState<Doctor | null>(null);
+  const params = useParams();
+  const [loading, setLoading] = useState<boolean>(true);
+  const id = Array.isArray(params?.id) ? params.id[0] : params?.id;
   const { control, handleSubmit, register } = useForm();
 
+  useEffect(() => {
+    const fetchDoctorData = async () => {
+      if (id) {
+        const doctorData = sampleDoctorData[id]; // Use the sample data for now
+        if (doctorData) {
+          setDoctor(doctorData);
+        }
+        setLoading(false); // Set loading to false after fetching
+      }
+    };
+
+    fetchDoctorData();
+  }, [id]);
+  if (loading) {
+    return <p className="text-center text-gray-600">Loading doctor details...</p>; // Improved loading state
+  }
+
+  if (!doctor) {
+    return <p className="text-center text-red-600">Doctor not found.</p>; // Handle doctor not found
+  }
   // Submit function
   const onSubmit = () => {
 
@@ -26,24 +74,8 @@ const ConsultingFeedback = () => {
       onSubmit={handleSubmit(onSubmit)}
       className="mx-auto max-w-sm rounded-lg bg-white p-4 shadow-md sm:max-w-md md:max-w-lg lg:max-w-xl"
     >
-      {/* Header */}
-      <div className="mb-4 flex items-center">
-        <button type="button" className="mr-2 text-blue-500">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="size-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
-        <h1 className="text-lg font-semibold">Consulting Feedback</h1>
-      </div>
-
       {/* Doctor Details Component */}
-      <DoctorDetails doctor={doctor} />
+      <DoctorInfo doctor={doctor} />
 
       {/* Consulting Time Component */}
       <ConsultingTime consultingTime="9:00 AM | Oct 23" />

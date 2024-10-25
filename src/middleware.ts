@@ -20,6 +20,7 @@ const isProtectedRoute = createRouteMatcher([
   '/reschedule_appointment(.*)',
   '/book-appointment(.*)',
   '/success(.*)',
+  '/consulting_feedback(.*)',
 ]);
 
 export default function middleware(

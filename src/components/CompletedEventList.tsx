@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 type Appointment = {
@@ -22,7 +23,7 @@ const CompletedEventList = ({ appointments }: { appointments: Appointment[] }) =
                   className="mb-4 mr-0 size-16 rounded-full md:mb-0 md:mr-4"
                 />
 
-                <div className="flex-1">
+                <Link href={`/consulting_feedback/${appointment.id}`} className="flex-1">
                   <div className="flex flex-col items-center justify-between md:flex-row md:items-start">
                     <div>
                       <p className="text-center text-lg font-semibold md:text-left">{appointment.doctor}</p>
@@ -49,7 +50,7 @@ const CompletedEventList = ({ appointments }: { appointments: Appointment[] }) =
                   <p className="mt-2 text-center text-sm text-gray-600 md:text-left">
                     Appointment completed successfully.
                   </p>
-                </div>
+                </Link>
               </div>
             ))
           )
