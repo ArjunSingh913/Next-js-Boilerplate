@@ -11,7 +11,7 @@ const config: Config = {
     extend: {}, // Extend default theme here
   },
   plugins: [], // Add any Tailwind plugins if needed
-  purge: false,
+
 };
 
 export default config;
